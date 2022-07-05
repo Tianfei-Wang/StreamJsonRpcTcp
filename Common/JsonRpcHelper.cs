@@ -12,7 +12,8 @@ namespace Common
 {
     public static class JsonRpcHelper
     {
-        public static async Task MarshalRemoteServerObjectAsync(IPAddress address, int port, IJsonRpc agvInterface)
+        public static async Task MarshalRemoteServerObjectAsync<T>(IPAddress address, int port, T agvInterface)
+            where T : IJsonRpc
         {
             int clientId = 1;
             TcpListener tcpListener = new TcpListener(address, port);
@@ -28,9 +29,12 @@ namespace Common
             }
         }
 
-        static async Task TcpResponseAsync(NetworkStream stream, int clientId, IJsonRpc agvInterface)
+        static async Task TcpResponseAsync<T>(NetworkStream stream, int clientId, T agvInterface)
+            where T : IJsonRpc
         {
-            var jsonRpc = JsonRpc.Attach(stream, agvInterface);
+            var jsonRpc = new JsonRpc(stream);
+            jsonRpc.AddLocalRpcTarget<T>(agvInterface, null);
+            jsonRpc.StartListening();
             await jsonRpc.Completion;
             Console.WriteLine($"Client #{clientId} Disconnect");
             jsonRpc.Dispose();

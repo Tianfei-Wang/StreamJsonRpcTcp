@@ -24,7 +24,7 @@ namespace JsonRpcClient
         {
             IPAddress address = IPAddress.Parse("127.0.0.1");
             int port = 6100;
-            _ = JsonRpcHelper.MarshalRemoteServerObjectAsync(address, port, this);
+            _ = JsonRpcHelper.MarshalRemoteServerObjectAsync<IExe2>(address, port, this);
         }
 
         public void Exe2Received(Exe2Args args)
