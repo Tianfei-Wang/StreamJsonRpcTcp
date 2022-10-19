@@ -44,7 +44,8 @@ namespace JsonRpc_Server
             
             int args1 = int.Parse(textBoxAgvId.Text);
             int args2 = int.Parse(textBoxTranId.Text);
-            Exe2Args exe2Args = new Exe2Args(args1,args2);
+            string argsTest=textBoxTestArgs.Text;
+            Exe2Args exe2Args = new Exe2Args(args1,args2, argsTest);
             exe2Impl.ToExe2Args(exe2Args);
         }
 

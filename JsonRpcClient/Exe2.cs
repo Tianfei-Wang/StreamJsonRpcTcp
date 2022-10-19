@@ -36,7 +36,8 @@ namespace JsonRpcClient
         public void Show( Exe2Args args)
         {
             args1.Text = args.Args1.ToString();
-            args2.Text = args.Args2.ToString(); 
+            args2.Text = args.Args2.ToString();
+            textBoxTest.Text=args.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)

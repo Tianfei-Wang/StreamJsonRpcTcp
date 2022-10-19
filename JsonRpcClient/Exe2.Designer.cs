@@ -36,12 +36,14 @@
             this.labelAgvId = new System.Windows.Forms.Label();
             this.args2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBoxTest = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // textBoxSendToAgv
+            // textBoxSendToExe1
             // 
             this.textBoxSendToExe1.Location = new System.Drawing.Point(194, 102);
-            this.textBoxSendToExe1.Name = "textBoxSendToAgv";
+            this.textBoxSendToExe1.Name = "textBoxSendToExe1";
             this.textBoxSendToExe1.Size = new System.Drawing.Size(224, 27);
             this.textBoxSendToExe1.TabIndex = 0;
             this.textBoxSendToExe1.Text = "123";
@@ -65,10 +67,10 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBoxTransactionFinishedId
+            // args1
             // 
             this.args1.Location = new System.Drawing.Point(252, 306);
-            this.args1.Name = "textBoxTransactionFinishedId";
+            this.args1.Name = "args1";
             this.args1.Size = new System.Drawing.Size(125, 27);
             this.args1.TabIndex = 3;
             // 
@@ -90,10 +92,10 @@
             this.labelAgvId.TabIndex = 6;
             this.labelAgvId.Text = "args2";
             // 
-            // textBoxAgvId
+            // args2
             // 
             this.args2.Location = new System.Drawing.Point(252, 357);
-            this.args2.Name = "textBoxAgvId";
+            this.args2.Name = "args2";
             this.args2.Size = new System.Drawing.Size(125, 27);
             this.args2.TabIndex = 5;
             // 
@@ -106,11 +108,29 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Form Exe1:";
             // 
-            // FormClientTC
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(172, 407);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(74, 20);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "TestArgs";
+            // 
+            // textBoxTest
+            // 
+            this.textBoxTest.Location = new System.Drawing.Point(252, 400);
+            this.textBoxTest.Name = "textBoxTest";
+            this.textBoxTest.Size = new System.Drawing.Size(125, 27);
+            this.textBoxTest.TabIndex = 8;
+            // 
+            // Exe2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.textBoxTest);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.labelAgvId);
             this.Controls.Add(this.args2);
@@ -137,5 +157,7 @@
         private System.Windows.Forms.Label labelAgvId;
         private System.Windows.Forms.TextBox args2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBoxTest;
     }
 }

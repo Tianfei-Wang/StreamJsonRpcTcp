@@ -36,6 +36,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxAgvId = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBoxTestArgs = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // textBoxAgvShow
@@ -73,7 +75,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(508, 335);
+            this.button1.Location = new System.Drawing.Point(510, 383);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(94, 29);
             this.button1.TabIndex = 4;
@@ -107,11 +109,30 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "args1";
             // 
-            // FormServerAI
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(241, 387);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(74, 20);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "TestArgs";
+            // 
+            // textBoxTestArgs
+            // 
+            this.textBoxTestArgs.Location = new System.Drawing.Point(325, 384);
+            this.textBoxTestArgs.Name = "textBoxTestArgs";
+            this.textBoxTestArgs.Size = new System.Drawing.Size(152, 27);
+            this.textBoxTestArgs.TabIndex = 8;
+            this.textBoxTestArgs.Text = "2";
+            // 
+            // Exe1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.textBoxTestArgs);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBoxAgvId);
             this.Controls.Add(this.label3);
@@ -138,5 +159,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxAgvId;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBoxTestArgs;
     }
 }
