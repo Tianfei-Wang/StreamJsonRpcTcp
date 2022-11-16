@@ -5,6 +5,8 @@ using System.Net.Sockets;
 using System.Text;
 using Common;
 using StreamJsonRpc;
+using System.Threading.Tasks;
+using System.Drawing;
 
 namespace JsonRpcClient
 {
@@ -33,6 +35,20 @@ namespace JsonRpcClient
         public void ToExe1(Exe1Args args)
         {
             Exe1Proxy.Exe1Received(args);
+        }
+
+        public async Task<string> GetTest1ObjectName()
+        {
+            Test1Object test1;
+           test1 = (Test1Object)await Exe1Proxy.FindNewFromServer(typeof(Test1Object));
+            return test1.Name;
+        }
+
+        public async Task<string> GetTest2ObjectTag()
+        {
+            Test2Object test2;
+            test2 = (Test2Object)await Exe1Proxy.FindNewFromServer(typeof(Test2Object));
+            return test2.Tag.ToString();
         }
 
 

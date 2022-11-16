@@ -48,5 +48,17 @@ namespace JsonRpcClient
             exe1Interface.ToExe1(request);
             
         }
+
+        private async void button2_Click(object sender, EventArgs e)
+        {
+          string name= await exe1Interface.GetTest1ObjectName();
+            textBoxTest1Name.Text = name;
+        }
+
+        private async void button3_Click(object sender, EventArgs e)
+        {
+          string tag=await  exe1Interface.GetTest2ObjectTag();
+            textBoxTest2Tag.Text = tag;
+        }
     }
 }

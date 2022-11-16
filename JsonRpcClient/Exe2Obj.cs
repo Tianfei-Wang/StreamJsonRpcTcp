@@ -27,6 +27,10 @@ namespace JsonRpcClient
             _ = JsonRpcHelper.MarshalRemoteServerObjectAsync<IExe2>(address, port, this);
         }
 
+        /// <summary>
+        /// Implement StreamJsonRpc's handling of delegates event
+        /// </summary>
+        /// <param name="args"></param>
         public void Exe2Received(Exe2Args args)
         {
             Exe2Event.DynamicInvoke(args);
