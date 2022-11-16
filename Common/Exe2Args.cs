@@ -1,4 +1,5 @@
-﻿namespace Common
+﻿
+namespace Common
 {
     public class Exe2Args
     {
@@ -24,7 +25,7 @@
                 parameters = new string[alarmParameters.Length];
                 for (int i = 0; i < alarmParameters.Length; i++)
                 {
-                    Parameters[i] = ((alarmParameters[i] != null) ? alarmParameters[i].ToString() : "[null]");
+                    parameters[i] = ((alarmParameters[i] != null) ? alarmParameters[i].ToString() : "[null]");
                 }
             }
             else

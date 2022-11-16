@@ -40,5 +40,17 @@ namespace Common
             jsonRpc.Dispose();
             await stream.DisposeAsync();
         }
+
+        public static IJsonRpc GetRemoteInstance<T>(string hostName, int port)
+            where T : class
+        {
+            Console.WriteLine("connect to Server...");
+            var tcpClient = new TcpClient(hostName, port);
+            var jsonRpcStream = tcpClient.GetStream();
+            Console.WriteLine("connected Server");
+
+            T jsonRpcObject = JsonRpc.Attach<T>(jsonRpcStream);
+            return (IJsonRpc)jsonRpcObject;
+        }
     }
 }

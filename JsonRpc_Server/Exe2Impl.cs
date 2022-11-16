@@ -16,11 +16,17 @@ namespace JsonRpc_Server
         {
             string hostName = "127.0.0.1";
             int port = 6100;
+
+            jsonRpcObject = JsonRpcHelper.GetRemoteInstance<IExe2>(hostName, port);
+
+
+            /*
             Console.WriteLine("connect to server...");
             var tcpClient = new TcpClient(hostName, port);
             var jsonRpcStream = tcpClient.GetStream();
             Console.WriteLine("connected");
             jsonRpcObject = JsonRpc.Attach<IExe2>(jsonRpcStream);
+            */
         }
 
         public void ToExe2Args(Exe2Args args)
