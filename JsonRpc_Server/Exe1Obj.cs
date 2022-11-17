@@ -63,5 +63,11 @@ namespace JsonRpc_Server
             IObject @object = (IObject)testObjectCollections[type];
             return @object;
         }
+
+        public async Task<Test3Object> GetDeriveObject()
+        {
+            Test3Object test3Object = new Test3Object(true, new TestObjDerive());
+            return test3Object; //the object have “Name” propety 
+        }
     }
 }

@@ -51,6 +51,14 @@ namespace JsonRpcClient
             return test2.Tag.ToString();
         }
 
+        public async Task<string> GetObjectDeriveName()
+        {
+            Test3Object test3Object;
+            test3Object = (Test3Object)await Exe1Proxy.GetDeriveObject();
+            return ((TestObjDerive)test3Object.TestObjBase).Name; //Data loss due to Json's handling of base classes, Unable to convert
+
+        }
+
 
     }
 }
