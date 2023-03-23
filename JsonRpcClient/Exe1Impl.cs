@@ -12,6 +12,8 @@ namespace JsonRpcClient
 {
     public class Exe1Impl:JsonRpcClientBase
     {
+        private delegate void StatusReportDelegate(Exe1Args args);
+
         public IExe1 Exe1Proxy =>  jsonRpcObject as IExe1;
 
         public async void Initialize()
@@ -35,6 +37,21 @@ namespace JsonRpcClient
         public void ToExe1(Exe1Args args)
         {
             Exe1Proxy.Exe1Received(args);
+        }
+
+        public void StatusReportToExe2(int agvId, string message)
+        {
+            CallRemoteObject(new StatusReportDelegate(ToExe1StatusReport),new Exe1Args(agvId,message));
+        }
+
+        public void ToExe1StatusReport(Exe1Args args)
+        {
+            Exe1Proxy.StatusReport(args);
+        }
+
+        public void ToExe1RegisterDelegate(string delId, TestEventHandler handler)
+        {
+            Exe1Proxy.RegisterDelegate(delId,handler);
         }
 
         public async Task<string> GetTest1ObjectName()

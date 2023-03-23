@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace JsonRpc_Server
@@ -42,6 +43,13 @@ namespace JsonRpc_Server
             Exe1Event.DynamicInvoke(this, args);     
         }
 
+        public void StatusReport(Exe1Args args)
+        {
+
+            Exe1Event.DynamicInvoke(this, args);
+
+        }
+
         public void CheckConnect()
         {
            
@@ -56,6 +64,7 @@ namespace JsonRpc_Server
         /// <exception cref="Exception"></exception>
         public async Task<IObject> FindNewFromServer(Type type)
         {
+            //Use using to consider concurrency restrictions
             if (type.GetInterface(typeof(IObject).Name)==null)
             {
                 throw new Exception();
@@ -68,6 +77,32 @@ namespace JsonRpc_Server
         {
             Test3Object test3Object = new Test3Object(true, new TestObjDerive());
             return test3Object; //the object have “Name” propety 
+        }
+
+        TestEventHandler testEventHandler;
+
+        string delId;
+
+        //Register delegates from clients
+        public void RegisterDelegate(string delId, TestEventHandler handler)
+        {
+           testEventHandler = handler;
+            this.delId = delId;
+
+
+            Thread.Sleep(5000);
+            TestDelArgs args=new TestDelArgs();
+            ToClientCallback(args);
+        }
+
+        //Send a callback to the client
+        public void ToClientCallback(TestDelArgs args)
+        {
+            
+            if (testEventHandler!=null && args!=null)
+            {
+                testEventHandler.DynamicInvoke(args);
+            }
         }
     }
 }

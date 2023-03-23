@@ -15,22 +15,22 @@ namespace Common
 
         public string[] Parameters => parameters;
 
-        public Exe2Args( int args1, int args2,params object[] alarmParameters)
+        public Exe2Args( int args1, int args2,params object[] parameters)
         {
             this.args1 = args1;
             this.args2 = args2;
 
-            if (alarmParameters != null)
+            if (parameters != null)
             {
-                parameters = new string[alarmParameters.Length];
-                for (int i = 0; i < alarmParameters.Length; i++)
+                this.parameters = new string[parameters.Length];
+                for (int i = 0; i < parameters.Length; i++)
                 {
-                    parameters[i] = ((alarmParameters[i] != null) ? alarmParameters[i].ToString() : "[null]");
+                    this.parameters[i] = ((parameters[i] != null) ? parameters[i].ToString() : "[null]");
                 }
             }
             else
             {
-                parameters = new string[0];
+                this.parameters = new string[0];
             }
 
         }

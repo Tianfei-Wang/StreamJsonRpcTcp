@@ -10,10 +10,15 @@ namespace Server
     {
         void Exe1Received(Exe1Args args);
 
+        void StatusReport(Exe1Args args);
+
         //StreamJsonRpc only supports the return of Task types? And .NetRemoting is different
         Task<IObject> FindNewFromServer(Type type);
 
         Task<Test3Object> GetDeriveObject();
+
+        void RegisterDelegate(string delId,TestEventHandler handler);
+
 
 
     }

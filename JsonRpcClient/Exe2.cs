@@ -8,7 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Common;
+using Server;
 using StreamJsonRpc;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace JsonRpcClient
 {
@@ -65,6 +67,33 @@ namespace JsonRpcClient
         {
             string name = await exe1Interface.GetObjectDeriveName();
             textBoxDeriveName.Text = name;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            string messageToAgv = textBoxSendToExe1.Text;
+            var request = new Exe1Args(1, messageToAgv);
+
+            exe1Interface.StatusReportToExe2(request.AgvId,request.Message);
+        }
+
+        //public event TestEventHandler TestEventHandler;
+        TestEventWrapper testEventWrapper = new TestEventWrapper();
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            testEventWrapper.Event += TestEventWrapper_Event;
+            //TestEventHandler += TestEventWrapper_Event;
+
+
+            exe1Interface.ToExe1RegisterDelegate("test", testEventWrapper.OnEvent);
+        }
+
+        private void TestEventWrapper_Event(string delId, TestDelArgs args)
+        {
+            textBoxTestDel.Text = delId;
+            textBoxTestArgs.Text=args.CreateAt.ToString();
+
         }
     }
 }

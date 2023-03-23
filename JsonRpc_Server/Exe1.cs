@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Common;
+using Server;
 
 namespace JsonRpc_Server
 {
@@ -53,6 +54,11 @@ namespace JsonRpc_Server
         {
             exe2Impl = new Exe2Impl();
             exe2Impl.Initialize();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

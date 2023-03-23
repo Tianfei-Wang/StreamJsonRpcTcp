@@ -17,6 +17,30 @@ namespace Common
     {
         protected  IJsonRpc jsonRpcObject;
 
+        protected virtual bool CallRemoteObject(Delegate del, object args)
+        {
+            if (args == null)
+            {
+                throw new ArgumentNullException("args");
+            }
+            object result;
+            return CallRemoteObject(args.ToString(), del, out result, args);
+        }
+
+        private bool CallRemoteObject(string logString, Delegate del, out object result, params object[] args)
+        {
+            try
+            {
+                result = del.DynamicInvoke(args);
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public async void Initialize(string hostname,int port)
         {
 
